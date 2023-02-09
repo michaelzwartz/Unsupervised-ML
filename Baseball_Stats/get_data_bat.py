@@ -83,3 +83,5 @@ for a in batIDs:
 
 #create new df to include ID info and normalized batting stats
 batStats_clean20 = batting[good20]
+
+batStats_clean20.to_csv("batStats_clean20.csv", index=False)
