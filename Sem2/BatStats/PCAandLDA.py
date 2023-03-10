@@ -36,21 +36,21 @@ plot1 = plt.hist(batStats1D, density=True)
 w2 = sorted_eigenvec[:, 0:2]
 
 #dot productor of eigenvector and dataset
-stars2D = np.dot(w2.transpose(), PCA_batStats.transpose()).transpose()
+batStats2D = np.dot(w2.transpose(), PCA_batStats.transpose()).transpose()
 
 #create plot
-plot2 = plt.scatter(stars2D[:,0], stars2D[:,1])
+plot2 = plt.scatter(batStats2D[:,0], batStats2D[:,1])
 
 #select eigenvector to reduce the data set to 3D
 w3 = sorted_eigenvec[:, 0:3]
 
 #dot productor of eigenvector and dataset
-stars3D = np.dot(w3.transpose(), PCA_batStats.transpose()).transpose()
+batStats3D = np.dot(w3.transpose(), PCA_batStats.transpose()).transpose()
 
 #create plot
 plot3 = plt.figure()
 ax = plot3.add_subplot(projection='3d')
-ax.scatter(stars3D[:,0], stars3D[:,1], stars3D[:,2])
+ax.scatter(batStats3D[:,0], batStats3D[:,1], batStats3D[:,2])
 plt.show()
 
 
