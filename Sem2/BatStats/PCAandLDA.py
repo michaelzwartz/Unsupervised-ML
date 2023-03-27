@@ -27,30 +27,30 @@ sorted_eigenvec = eigen_vec[:,sorted_index]
 w1 = sorted_eigenvec[:, 0:1]
 
 #dot productor of eigenvector and dataset
-batStats1D = np.dot(w1.transpose(), PCA_batStats.transpose()).transpose()
+batStats1D_PCA = np.dot(w1.transpose(), PCA_batStats.transpose()).transpose()
 
 #create plot
-plot1 = plt.hist(batStats1D, density=True)
+plot1 = plt.hist(batStats1D_PCA, density=True)
 
 #select eigenvector to reduce the data set to 2D
 w2 = sorted_eigenvec[:, 0:2]
 
 #dot productor of eigenvector and dataset
-batStats2D = np.dot(w2.transpose(), PCA_batStats.transpose()).transpose()
+batStats2D_PCA = np.dot(w2.transpose(), PCA_batStats.transpose()).transpose()
 
 #create plot
-plot2 = plt.scatter(batStats2D[:,0], batStats2D[:,1])
+plot2 = plt.scatter(batStats2D_PCA[:,0], batStats2D_PCA[:,1])
 
 #select eigenvector to reduce the data set to 3D
 w3 = sorted_eigenvec[:, 0:3]
 
 #dot productor of eigenvector and dataset
-batStats3D = np.dot(w3.transpose(), PCA_batStats.transpose()).transpose()
+batStats3D_PCA = np.dot(w3.transpose(), PCA_batStats.transpose()).transpose()
 
 #create plot
 plot3 = plt.figure()
 ax = plot3.add_subplot(projection='3d')
-ax.scatter(batStats3D[:,0], batStats3D[:,1], batStats3D[:,2])
+ax.scatter(batStats3D_PCA[:,0], batStats3D_PCA[:,1], batStats3D_PCA[:,2])
 plt.show()
 
 
@@ -104,3 +104,13 @@ w = v[:1]
 y1 = X1*w
 y2 = X2*w
 y3 = X3*w
+
+#ignore copy warning 
+import warnings
+warnings.filterwarnings('ignore')
+
+#combine clases into one data series 
+batStats1D_LDA = pd.concat([y1, y2, y3], axis=0)
+
+#plot series 
+plot1 = plt.hist(batStats1D_LDA, density=True)
