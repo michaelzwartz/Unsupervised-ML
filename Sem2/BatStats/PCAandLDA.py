@@ -113,4 +113,4 @@ warnings.filterwarnings('ignore')
 batStats1D_LDA1 = y1.append([y2, y3], ignore_index=True)
 
 #plot series 
-plot1 = plt.hist(batStats1D_LDA1, density=True)
+plot4 = plt.hist(batStats1D_LDA1, density=True)
