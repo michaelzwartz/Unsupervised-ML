@@ -110,7 +110,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #combine clases into one data series 
-batStats1D_LDA = pd.concat([y1, y2, y3], axis=0)
+batStats1D_LDA1 = y1.append([y2, y3], ignore_index=True)
 
 #plot series 
-plot1 = plt.hist(batStats1D_LDA, density=True)
+plot1 = plt.hist(batStats1D_LDA1, density=True)
